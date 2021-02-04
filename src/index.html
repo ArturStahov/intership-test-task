@@ -52,10 +52,52 @@
     </section>
 
     <section class="section-form-create-events">
-      <form action="">
+      <div class="container">
+        <form action="" class="form-create-events" data-type="form-events">
+          <div class="form-create-events_block">
+            <label class="form-create-events_label">
+              <p class="form-create-events_label-text">Name of the event:</p>
+              <input class="form-create-events_input-name" name="name" type="text" minlength="3" maxlength="20"
+                autocomplete="off" required>
+            </label>
 
+            <div class="form-create-events_label">
+              <p class="form-create-events_label-text">Patricipants:</p>
+              <div class="form-create-events_select" data-type="form-select-members"></div>
+            </div>
 
-      </form>
+            <label class="form-create-events_label">
+              <p class="form-create-events_label-text">Day:</p>
+              <select class="form-create-events_select" name="day" required>
+                <option value="mon">Monday</option>
+                <option value="tue">Tuesday</option>
+                <option value="wed">Wednesday</option>
+                <option value="thu">Thursday</option>
+                <option value="fri">Friday</option>
+              </select>
+            </label>
+
+            <label class="form-create-events_label">
+              <p class="form-create-events_label-text">Time:</p>
+              <select class="form-create-events_select" name="time" required>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-create-events_block">
+            <button class="button-component form-create-events_button-create" type="submit">Create</button>
+            <button class="button-component form-create-events_button-cancel" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
     </section>
 
   </main>

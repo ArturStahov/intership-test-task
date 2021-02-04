@@ -1,0 +1,64 @@
+$bg-color-button-create: #5ca82a;
+$bg-color-button-cancel: #bf3a30;
+$hover-color-button-create: #ffff73;
+$font-label-color: #000000;
+
+.form-create-events {
+  width: 100%;
+  padding-top: 40px;
+  display: flex;
+  justify-content: flex-start;
+
+  &_label {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    &-text {
+      font-size: 1.4rem;
+      color: $font-label-color;
+      margin-bottom: 5px;
+    }
+  }
+
+  &_block {
+    max-width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+    &:last-child {
+      flex-wrap: nowrap;
+      align-items: flex-end;
+    }
+  }
+
+  &_input-name {
+    width: 250px;
+    height: 30px;
+    border: 2px solid grey;
+    border-radius: 1rem;
+    padding-left: 10px;
+    outline: none;
+    margin-bottom: 20px;
+    caret-color: #ff9200;
+    &:focus {
+      box-shadow: inset 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  &_select {
+    width: 250px;
+    height: 30px;
+  }
+
+  &_button-create {
+    background-color: $bg-color-button-create;
+    margin-right: 20px;
+    &:hover,
+    :focus {
+      background-color: $hover-color-button-create;
+    }
+  }
+}
