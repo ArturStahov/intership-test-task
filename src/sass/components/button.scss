@@ -1,0 +1,22 @@
+$bg-color: #ff7e40;
+$hover-bg-color: #ffa073;
+$font-color: #000000;
+
+.button-component {
+  width: 150px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $bg-color;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  color: $font-color;
+  transition: background-color 0.3s ease-in;
+  cursor: pointer;
+  &:hover,
+  :focus {
+    background-color: $hover-bg-color;
+  }
+}

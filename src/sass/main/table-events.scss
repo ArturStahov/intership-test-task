@@ -1,0 +1,29 @@
+.table-events {
+  text-decoration: none;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+
+  &_row-title {
+    background-color: #354251;
+  }
+
+  & td,
+  th {
+    white-space: pre-wrap;
+    padding: 10px 0px;
+    vertical-align: middle;
+    border: 2px solid #3aa0e8;
+  }
+  & th {
+    font-weight: normal;
+    font-size: 1.4rem;
+    color: $table-col-title-font-color;
+    background-color: #354251;
+  }
+  & td {
+    width: 50px;
+    font-size: 1.4rem;
+    color: #ffffff;
+  }
+}
