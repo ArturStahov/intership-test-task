@@ -2,6 +2,8 @@ import '@csstools/normalize.css';
 import './sass/main.scss';
 import { Select } from './js/selectPlugin'
 import data from './team_db.json'
+import CreateEvents from './js/createEvents'
+
 
 
 const selectFilter = new Select('[data-type="select-plugin"]', {
@@ -10,8 +12,7 @@ const selectFilter = new Select('[data-type="select-plugin"]', {
     startID: 0
 });
 
-const selectMember = new Select('[data-type="form-select-members"]', {
-    placeholder: 'select value',
-    data: data,
-});
+const createEvents = new CreateEvents({ selectorForm: '[data-type="form-events"]', selectorTable: '[data-type="table-area"]' })
+
+
 

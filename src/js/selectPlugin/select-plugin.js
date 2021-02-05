@@ -1,5 +1,5 @@
 const template = (data = [], placeholder, startID) => {
-    let textPlaceholder = placeholder ?? 'Выбери'; //Оператор нуллевого слияния
+    let textPlaceholder = placeholder ?? 'Выбери'
     let classSelItem = ' ';
     const items = data.map(item => {
         if (item.id === startID) {
