@@ -1,6 +1,8 @@
 $event-bg-color: #8f948f;
 $button-delete-bg-color: #ac392a;
 $title-font-color: #0c0c0c;
+$scroll-bg-color: #1e1e24;
+$scroll-thumb-bg-color: #ffaa00;
 
 .event {
   position: absolute;
@@ -12,6 +14,7 @@ $title-font-color: #0c0c0c;
   display: flex;
   justify-content: center;
   background-color: $event-bg-color;
+
   &_title {
     overflow-x: auto;
     max-width: 80px;
@@ -22,12 +25,13 @@ $title-font-color: #0c0c0c;
       height: 0.5rem;
     }
     &::-webkit-scrollbar-track {
-      background: #1e1e24;
+      background: $scroll-bg-color;
     }
     &::-webkit-scrollbar-thumb {
-      background: #ffaa00;
+      background: $scroll-thumb-bg-color;
     }
   }
+
   &_button-delete {
     position: absolute;
     top: 0;
@@ -41,6 +45,7 @@ $title-font-color: #0c0c0c;
     border: none;
     cursor: pointer;
   }
+
   &.hidden {
     opacity: 0;
     visibility: hidden;

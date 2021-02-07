@@ -1,3 +1,8 @@
+$row-title-bg-color: #354251;
+$table-border-color: #3aa0e8;
+$table-header-th-color: #354251;
+$table-row-title-font-color: #ffffff;
+
 .table-events {
   text-decoration: none;
   border-collapse: collapse;
@@ -5,7 +10,7 @@
   text-align: center;
 
   &_row-title {
-    background-color: #354251;
+    background-color: $row-title-bg-color;
   }
 
   & td,
@@ -13,18 +18,20 @@
     white-space: pre-wrap;
     padding: 10px 0px;
     vertical-align: middle;
-    border: 2px solid #3aa0e8;
+    border: 2px solid $table-border-color;
   }
+
   & th {
     font-weight: normal;
     font-size: 1.4rem;
     color: $table-col-title-font-color;
-    background-color: #354251;
+    background-color: $table-header-th-color;
   }
+
   & td {
     position: relative;
     width: 100px;
     font-size: 1.4rem;
-    color: #ffffff;
+    color: $table-row-title-font-color;
   }
 }

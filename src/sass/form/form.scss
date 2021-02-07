@@ -2,6 +2,9 @@ $bg-color-button-create: #5ca82a;
 $bg-color-button-cancel: #bf3a30;
 $hover-color-button-create: #ffff73;
 $font-label-color: #000000;
+$box-shadow-color: rgba(0, 0, 0, 0.75);
+$border-colors: grey;
+$input-caret-color: #ff9200;
 
 .form-create-events {
   width: 100%;
@@ -36,14 +39,14 @@ $font-label-color: #000000;
   &_input-name {
     width: 250px;
     height: 30px;
-    border: 2px solid grey;
+    border: 2px solid $border-colors;
     border-radius: 1rem;
     padding-left: 10px;
     outline: none;
     margin-bottom: 20px;
-    caret-color: #ff9200;
+    caret-color: $input-caret-color;
     &:focus {
-      box-shadow: inset 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: inset 4px 4px 5px 0px $box-shadow-color;
     }
   }
 
@@ -51,7 +54,7 @@ $font-label-color: #000000;
     width: 250px;
     height: 30px;
     &.decorate {
-      border: 2px solid grey;
+      border: 2px solid $border-colors;
       border-radius: 1rem;
     }
   }

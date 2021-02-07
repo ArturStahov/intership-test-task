@@ -1,5 +1,5 @@
 const template = (data = [], placeholder, startID) => {
-    let textPlaceholder = placeholder ?? 'Выбери'
+    let textPlaceholder = placeholder ?? 'Select Value'
     let classSelItem = ' ';
     const items = data.map(item => {
         if (item.id === startID) {
@@ -29,7 +29,6 @@ export class Select {
 
     constructor(selector, options, startID) {
         this.selectRef = document.querySelector(selector);
-        console.log(this.selectRef);
         this.options = options;
         this.selectedID = startID;
         this.dispatchFilter = options.dispatchFilter ? options.dispatchFilter : null;
@@ -49,33 +48,52 @@ export class Select {
         if (type === "input") {
             this.toggle()
         }
-        if (type === "item") {
-            const id = event.target.dataset.id;
-            // let isItem = this.selectedItemsArray.find(item => item === id)
-            // if (isItem) {
-            //     this.selectedItemsArray = [...this.selectedItemsArray.filter(item => item !== id)]
-            //     event.target.classList.remove("selected");
-            // } else {
-            //     this.selectedItemsArray.push(id)
-            //     event.target.classList.add("selected");
-            // }
-            // console.log('isItem', isItem)
-            // console.log('this.selectedItemsArray', this.selectedItemsArray)
-            this.select(id);
-        }
-        if (type === "backdrop") {
 
+        if (type === "item") {
+            let id = Number(event.target.dataset.id);
+            this.selectedID = id;
+            let isItemInArray = this.selectedItemsArray.find(item => Number(item.id) === id)
+            let isSelectAll = this.selectedItemsArray.find(item => Number(item.id) === 0)
+            let itemUser = this._currentItem();
+            const elRefs = this.selectRef.querySelectorAll(`.selected`);
+            if (isSelectAll || this.selectedItemsArray.length == 0) {
+                elRefs.forEach(element => {
+                    element.classList.remove("selected");
+                });
+                this.selectedItemsArray = []
+            }
+            if (isItemInArray) {
+                this.selectedItemsArray = [...this.selectedItemsArray.filter(item => Number(item.id) !== id)]
+                event.target.classList.remove("selected");
+            } else {
+
+                if (id === 0) {
+                    this.selectedItemsArray = []
+                    elRefs.forEach(element => {
+                        element.classList.remove("selected");
+                    });
+                }
+                this.selectedItemsArray.push(itemUser)
+                event.target.classList.add("selected");
+            }
+            this.valueRef.textContent = this.selectedItemsArray.length > 0 ? this.selectedItemsArray.map(item => item.value) : 'All';
+        }
+
+        if (type === "backdrop") {
             this.close();
         }
-
     }
 
     get isOpen() {
         return this.selectRef.classList.contains("open")
     }
 
-    get currentItem() {
-        return this.options.data.find(item => Number(item.id) === Number(this.selectedID))
+    _currentItem() {
+        return this.options.data.find(item => Number(item.id) === this.selectedID)
+    }
+
+    getSelectedItemsArray() {
+        return this.selectedItemsArray;
     }
 
     toggle() {
@@ -93,6 +111,9 @@ export class Select {
     }
 
     close() {
+        if (this.dispatchFilter) {
+            this.dispatchFilter(this.selectedItemsArray)
+        }
         this.selectRef.classList.remove('open')
     }
 
@@ -100,23 +121,4 @@ export class Select {
         this.selectRef.removeEventListener('click', this.handlerEvent)
         this.selectRef.innerHTML = " "
     }
-
-    select(id) {
-        this.selectedID = id;
-        let selectItem = this.currentItem;
-
-        if (this.dispatchFilter) {
-            this.dispatchFilter(this.currentItem)
-        }
-
-        this.valueRef.textContent = selectItem.value;
-        const elRef = this.selectRef.querySelector(`.selected`);
-        if (elRef !== null) {
-            elRef.classList.remove("selected");
-        }
-        const selectItemRef = this.selectRef.querySelector(`[data-id="${id}"]`);
-        selectItemRef.classList.add('selected');
-        this.close();
-    }
-
 }

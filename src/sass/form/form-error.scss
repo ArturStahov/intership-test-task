@@ -1,5 +1,7 @@
 $message-font-color: #cc4444;
 $window-color: #ffffff;
+$box-shadow-color: rgba(0, 0, 0, 0.44);
+
 .form-error {
   width: 300px;
   padding: 10px;
@@ -10,7 +12,7 @@ $window-color: #ffffff;
   transform: translate(-50%, -50%);
   border: none;
   border-radius: 1rem;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.44);
+  box-shadow: 5px 5px 15px 5px $box-shadow-color;
   z-index: 99;
 
   &_message {

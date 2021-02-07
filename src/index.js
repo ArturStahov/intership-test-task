@@ -8,7 +8,6 @@ import Modal from './js/modal'
 import createTableTemplate from './js/tableTemplate'
 import PageControl from './js/pageControl'
 
-
 let itemEventArray = []
 let deleteItemId = null;
 
@@ -34,37 +33,35 @@ function renderTable() {
 renderTable();
 loadFromSave();
 
-
 function loadFromSave() {
     itemEventArray = [...JSON.parse(localStorage.getItem('save_data'))]
     renderEvent()
 }
 
 const arrayCellRefs = refs.tableBodyRef.querySelectorAll('[data-type="cell"]');
-console.log('arrayCellTable', arrayCellRefs)
 
-
-function dispatchFilter(filterValue) {
-    if (!filterValue) {
+function dispatchFilter(filterValueArray) {
+    if (!filterValueArray) {
         return
     }
+    let filtersArr = filterValueArray.map(item => item.value)
+
     arrayCellRefs.forEach(item => {
+        let domItemEvent = item.firstElementChild;
+        let domFilterStr = domItemEvent && domItemEvent.dataset.membersfilter;
 
-        console.log('filterValue.id', filterValue.id)
-
-        let itemEvent = item.firstElementChild;
-        let eventMemberId = itemEvent && Number(itemEvent.dataset.memberid);
-
-
-        if (itemEvent && eventMemberId !== filterValue.id) {
-            itemEvent.classList.add('hidden')
+        if (domItemEvent) {
+            for (const filter of filtersArr) {
+                let isIncludes = domFilterStr.includes(filter);
+                if (isIncludes || filter === 'All' || domFilterStr === 'All') {
+                    domItemEvent.classList.remove('hidden')
+                    return
+                } else {
+                    domItemEvent.classList.add('hidden')
+                }
+            }
         }
-        if (itemEvent && eventMemberId === filterValue.id) {
-            itemEvent.classList.remove('hidden')
-        }
-        if (itemEvent && filterValue.id === 0) {
-            itemEvent.classList.remove('hidden')
-        }
+
     })
 }
 
@@ -87,7 +84,6 @@ const createEvents = new CreateEvents({ selectorForm: '[data-type="form-events"]
 function renderEvent() {
     itemEventArray.map(item => {
         const tableCellRef = refs.tableBodyRef.querySelector(`[data-marker="${item.marker}"]`)
-        console.log('tableCellRef', tableCellRef)
         const mockup = eventTemplate(item);
         tableCellRef.innerHTML = mockup;
     })
@@ -141,7 +137,6 @@ function save() {
     const saveData = JSON.stringify(itemEventArray);
     localStorage.setItem('save_data', saveData)
 }
-
 
 refs.tableBodyRef.addEventListener('click', handlerOpenModal)
 refs.modalRef.addEventListener('click', handlerModalButton)

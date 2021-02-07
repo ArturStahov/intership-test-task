@@ -1,7 +1,4 @@
-
 import tableData from '../table_db.json'
-
-
 
 function createTableRow(time) {
     const items = tableData.day.map(item => `<td data-marker="${time}-${item}" data-type="cell"></td>`)
