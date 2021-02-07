@@ -113,7 +113,6 @@ const handlerOpenModal = (e) => {
     }
     const { type } = e.target.dataset
     if (type === "button-delete") {
-        console.log('click')
         modal.open();
         deleteItemId = e.target.parentNode.dataset.id
     }
@@ -127,7 +126,6 @@ const handlerModalButton = (e) => {
 
     switch (type) {
         case 'button-delete':
-            console.log('arrayCellRefs in delete', arrayCellRefs)
             deleteItem()
             modal.close();
             break;
