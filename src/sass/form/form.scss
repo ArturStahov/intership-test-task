@@ -5,7 +5,6 @@ $font-label-color: #000000;
 
 .form-create-events {
   width: 100%;
-  padding-top: 40px;
   display: flex;
   justify-content: flex-start;
 
@@ -51,6 +50,10 @@ $font-label-color: #000000;
   &_select {
     width: 250px;
     height: 30px;
+    &.decorate {
+      border: 2px solid grey;
+      border-radius: 1rem;
+    }
   }
 
   &_button-create {

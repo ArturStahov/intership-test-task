@@ -10,18 +10,19 @@
 <body>
 
   <header class="page-header">
-    <nav class="page-nav">
+    <nav class="page-nav" data-type="page-nav">
       <div class="container page-nav_wrapper">
         <a href="#" class="logotype">Task Manager</a>
         <div class="page-nav_controls">
           <div class="page-nav_controls-item" data-type="select-plugin"></div>
-          <button class="page-nav_controls-item button-component  " type="button">New event +</button>
+          <button class="page-nav_controls-item button-component" type="button" data-type="button-create">New event
+            +</button>
         </div>
       </div>
     </nav>
   </header>
   <main class="page-main">
-    <section class="section-table-events">
+    <section class="section-table-events" data-type="section-table">
       <div class="container">
         <table class="table-events">
           <thead class="table-events_thead">
@@ -30,29 +31,19 @@
               <th>Mon</th>
               <th>Tue</th>
               <th>Wed</th>
-              <th>thu</th>
+              <th>Thu</th>
               <th>Fri</th>
             </tr>
           </thead>
           <tbody class="table-events_tbody" data-type="table-area">
-            <tr>
-              <td class="table-events_row-title">10:00</td>
-              <td data-marker="10-mon"></td>
-              <td data-marker="10-tue"></td>
-              <td data-marker="10-wed"></td>
-              <td data-marker="10-thu"></td>
-              <td data-marker="10-fri"></td>
-            </tr>
-
-
           </tbody>
         </table>
       </div>
-
     </section>
 
-    <section class="section-form-create-events">
+    <section class="section-create-events hidden" data-type="section-form">
       <div class="container">
+        <h2 class="section-create-events_title">Create event</h2>
         <form action="" class="form-create-events" data-type="form-events">
           <div class="form-create-events_block">
             <label class="form-create-events_label">
@@ -68,7 +59,7 @@
 
             <label class="form-create-events_label">
               <p class="form-create-events_label-text">Day:</p>
-              <select class="form-create-events_select" name="day" required>
+              <select class="form-create-events_select decorate" name="day" required>
                 <option value="mon">Monday</option>
                 <option value="tue">Tuesday</option>
                 <option value="wed">Wednesday</option>
@@ -79,7 +70,7 @@
 
             <label class="form-create-events_label">
               <p class="form-create-events_label-text">Time:</p>
-              <select class="form-create-events_select" name="time" required>
+              <select class="form-create-events_select decorate" name="time" required>
                 <option value="10">10:00</option>
                 <option value="11">11:00</option>
                 <option value="12">12:00</option>
@@ -94,15 +85,23 @@
           </div>
           <div class="form-create-events_block">
             <button class="button-component form-create-events_button-create" type="submit">Create</button>
-            <button class="button-component form-create-events_button-cancel" type="button">Cancel</button>
+            <button class="button-component form-create-events_button-cancel" type="button"
+              data-type="button-cancel">Cancel</button>
           </div>
         </form>
+        <div class="form-error hidden" data-type="form-error">
+          <p class="form-error_message">Failed to create an event.Time slot is already booked</p>
+        </div>
       </div>
     </section>
-
+    <div class="modal" data-type="modal">
+      <h2 class="modal_title">Are you sure you want to delete "Retrospective" event?</h2>
+      <div class="modal_controls">
+        <button class="button-component" type="button" data-type="button-close">No</button>
+        <button class="button-component" type="button" data-type="button-delete">Yes</button>
+      </div>
+    </div>
   </main>
-
-
 </body>
 
 </html>

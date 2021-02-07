@@ -6,9 +6,13 @@
 @import './header/logotype';
 @import './header/page-nav';
 @import './header/page-header';
-@import './main/table-events';
+@import './main/section-create-events';
+@import './main/table';
 
-@import './header/select-plugin';
+@import './select-plugin/select-plugin';
 @import './components/button';
 
 @import './form/form';
+@import './form/form-error';
+@import './modal/modal';
+@import './eventTemplate/event';

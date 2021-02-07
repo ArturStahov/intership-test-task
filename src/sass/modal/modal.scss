@@ -1,0 +1,36 @@
+$modal-window-color: #ffffff;
+$modal-title-font-color: #b67f7f;
+
+.modal {
+  width: 300px;
+  padding: 10px;
+  position: absolute;
+  background-color: $modal-window-color;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.44);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 99;
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &_title {
+    font-size: 1.4rem;
+    color: $modal-title-font-color;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  &_controls {
+    display: flex;
+    justify-content: space-between;
+    & button:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

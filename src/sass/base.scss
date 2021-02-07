@@ -32,6 +32,21 @@ li {
   list-style: none;
 }
 
+.hidden:not(:focus):not(:active),
+input[type='checkbox'].hidden,
+input[type='radio'].hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  bottom: 0px;
+  padding: 0px;
+  word-spacing: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .container {
   margin: 0 auto;
   @media screen and (max-width: $mobile-bp-max) {
