@@ -34,8 +34,13 @@ renderTable();
 loadFromSave();
 
 function loadFromSave() {
-    itemEventArray = [...JSON.parse(localStorage.getItem('save_data'))]
-    renderEvent()
+
+    if (localStorage.getItem('save_data')) {
+        const data = localStorage.getItem('save_data')
+        itemEventArray = [...JSON.parse(data)]
+        renderEvent()
+    }
+
 }
 
 const arrayCellRefs = refs.tableBodyRef.querySelectorAll('[data-type="cell"]');
@@ -82,11 +87,13 @@ function dispatchEvent(itemEvent) {
 const createEvents = new CreateEvents({ selectorForm: '[data-type="form-events"]', dispatchEvent })
 
 function renderEvent() {
-    itemEventArray.map(item => {
-        const tableCellRef = refs.tableBodyRef.querySelector(`[data-marker="${item.marker}"]`)
-        const mockup = eventTemplate(item);
-        tableCellRef.innerHTML = mockup;
-    })
+    if (itemEventArray.length > 0) {
+        itemEventArray.map(item => {
+            const tableCellRef = refs.tableBodyRef.querySelector(`[data-marker="${item.marker}"]`)
+            const mockup = eventTemplate(item);
+            tableCellRef.innerHTML = mockup;
+        })
+    }
 }
 
 function deleteItem() {
